@@ -1347,7 +1347,7 @@ a {
   padding: 20px;
   border: 1px solid #888;
   width: 100%; /* Çoğu ekran için uygun genişlik */
-  max-width: 600px; /* Maksimum genişlik */
+  max-width: 400px; /* Maksimum genişlik */
 }
 
 /* Kapat Butonu */
@@ -1366,14 +1366,14 @@ a {
 }
 
 /* Form Stilleri */
-#newUserForm label {
+#newUserForm label, #editUserForm label {
   display: block;
   margin-top: 10px;
 }
 
-#newUserForm input[type="text"],
-#newUserForm input[type="email"],
-#newUserForm input[type="password"] {
+#newUserForm input, #editUserForm input[type="text"],
+#newUserForm input, #editUserForm input[type="email"],
+#newUserForm input, #editUserForm input[type="password"] {
   width: calc(100% - 20px);
   padding: 10px;
   margin-top: 5px;
@@ -1382,7 +1382,7 @@ a {
 }
 
 /* Buton Stilleri */
-#newUserForm button {
+#newUserForm button, #editUserForm button {
   display: inline-block;
   background-color: #904caf;
   color: white;
@@ -1393,7 +1393,7 @@ a {
   cursor: pointer;
 }
 
-#newUserForm button:hover {
+#newUserForm button:hover, #editUserForm button:hover {
   background-color: #7b45a0;
 }
 

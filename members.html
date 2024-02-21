@@ -101,6 +101,27 @@
     </header>
 
     <body>
+        <div id="editUserModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit User</h2>
+                <form id="editUserForm">
+                    <label for="editName">Name:</label><br>
+                    <input type="text" id="editName" name="name"><br>
+                    <label for="editEmail">Email:</label><br>
+                    <input type="email" id="editEmail" name="email"><br>
+                    <label for="editRole">Role:</label><br>
+                    <input type="text" id="editRole" name="role"><br>
+                    <label for="editDepartment">Department:</label><br>
+                    <input type="text" id="editDepartment" name="department"><br>
+                    <label for="editPassword">Password:</label><br>
+                    <input type="password" id="editPassword" name="password"><br><br>
+                    <button type="button" onclick="saveChanges()">Save</button>
+                    <button type="button" onclick="closeModal()">Cancel</button>
+                </form>
+            </div>
+        </div>
+        
         <div id="userModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -118,6 +139,7 @@
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password"><br><br>
                         <button type="submit">Create</button>
+                        <button type="edit">Edit</button>
                     </form>
                 </div>
             </div>
@@ -156,6 +178,40 @@
                     options.style.display = "none"; // Seçenekleri gizle
                 }
             }
+                    // Sayfa yüklendikten sonra çalışacak fonksiyon
+document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('editUserModal'); // Modal elementini seç
+    var closeModalButton = document.querySelector('.close'); // Kapatma butonunu seç
+
+    // "Edit" butonları için event listener ekler (class ismine göre ayarlayabilirsiniz)
+    document.querySelectorAll('.editUserLink').forEach(button => {
+        button.addEventListener('click', function() {
+            modal.style.display = 'block'; // Modalı göster
+        });
+    });
+
+    // Kapat butonu için event listener
+    closeModalButton.onclick = function() {
+        modal.style.display = 'none'; // Modalı kapat
+    }
+
+    // Modal dışına tıklandığında modalı kapat
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
+
+function saveChanges() {
+    // Değişiklikleri kaydetme işlemleri
+    closeModal();
+}
+
+function closeModal() {
+    var modal = document.getElementById('editUserModal'); // Modal elementini seç
+    modal.style.display = 'none'; // Modalı kapat
+}
 
         </script>
         <main class="table" id="customers_table">
@@ -201,7 +257,7 @@
                                 <div class="dropdown">
                                     <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">Options</button>
                                     <ul class="dropdown-menu">
-                                      <li><a href="#">Edit</a></li>
+                                        <li><a href="#" class="editUserLink">Edit</a></li>
                                       <li><a href="#">Delete</a></li>
                                     </ul>
                                   </div>
